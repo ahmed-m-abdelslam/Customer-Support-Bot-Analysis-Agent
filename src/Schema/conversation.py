@@ -18,4 +18,4 @@ class ConversationContext(BaseModel):
     user_messages: List[str] = Field(..., description="List of messages from the user")
     agent_messages: List[str] = Field(..., description="List of messages from the agent")
     summary: str = Field(..., description="Summary of the conversation")
-    stats: List[Statistics] = Field(..., description="Statistics related to the conversation")
+    stats: Statistics = Field(..., description="Statistics related to the conversation")

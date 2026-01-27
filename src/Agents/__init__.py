@@ -1,2 +1,2 @@
-from Agents.ConversationParserAgent import ConversationParserAgent
-from Agents.ContextBuilderAgent import ContextBuilderAgent
+from .ConversationParserAgent import ConversationParserAgent
+from .ContextBuilderAgent import ContextBuilderAgent

@@ -1,6 +1,7 @@
 from pydantic import BaseModel , Field # type: ignore
 from typing import List
 
+
 class Turn(BaseModel):
     speaker: str = Field(..., description="Speaker of the turn, either 'User' or 'Agent'")
     message: str = Field(..., description="Content of the message")

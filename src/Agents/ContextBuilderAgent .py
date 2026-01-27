@@ -1,6 +1,6 @@
-from Agents.A_BaseAgent import BaseAgent
+from Agents.BaseAgent import BaseAgent
 from crewai import Agent , Task # type: ignore
-from Schema.conversation import AllTurns
+from Schema.conversation import ConversationContext
 
 class ContextBuilderAgent(BaseAgent):
     def __init__(self):
@@ -30,7 +30,8 @@ class ContextBuilderAgent(BaseAgent):
                 - Compute interaction statistics (repetition, length)
                 """,
             
-            expected_output="Conversation context object with summary and statistics",
+            expected_output="A JSON object containing Conversation user messages , agent messages and statistics",
+            output_json = ConversationContext,
             output_file= "Outputs/context_summary.json",
             agent= agent,
         )

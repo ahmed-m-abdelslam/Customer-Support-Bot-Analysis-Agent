@@ -1,2 +1,3 @@
 from .ConversationParserAgent import ConversationParserAgent
 from .ContextBuilderAgent import ContextBuilderAgent
+from .IntentDetectionAgent import IntentDetectionAgent

@@ -19,3 +19,10 @@ class ConversationContext(BaseModel):
     agent_messages: List[str] = Field(..., description="List of messages from the agent")
     summary: str = Field(..., description="Summary of the conversation")
     stats: Statistics = Field(..., description="Statistics related to the conversation")
+
+class SentimentAnalysis(BaseModel):
+    sentiment: str = Field(..., description="Sentiment of the customer: Positive, Neutral, Negative")
+    urgency: str = Field(..., description="Urgency level of the customer: Low, Medium, High")
+
+class IntentDetection(BaseModel):
+    intent: str = Field(..., description="Main customer intent: Order Issue, Pickup, Return, Payment, Complaint, General Inquiry")

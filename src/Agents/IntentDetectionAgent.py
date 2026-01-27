@@ -1,5 +1,6 @@
 from Agents.BaseAgent import BaseAgent
 from crewai import Agent , Task # type: ignore
+from Schema.conversation import IntentDetection
 
 class IntentDetectionAgent(BaseAgent):
     def __init__(self):
@@ -9,7 +10,7 @@ class IntentDetectionAgent(BaseAgent):
             api_key=self.settings.OPENAI_API_KEY,
 
         )
-    def run(self):
+    def run(self, task_name):
         agent= Agent(
             name = "Intent Detection Agent",
             role="Intent Detection Analyst",
@@ -25,7 +26,9 @@ class IntentDetectionAgent(BaseAgent):
             Order Issue, Pickup, Return, Payment, Complaint, General Inquiry
             """,
         agent=agent,
-        output_file="Outputs/intent_detection.txt",
-        expected_output="Single intent label"
-            )
+        output_file="Outputs/intent_detection.json",
+        expected_output="Single intent label",
+        output_json = IntentDetection,
+        context=[task_name]
+        )
         return agent , task

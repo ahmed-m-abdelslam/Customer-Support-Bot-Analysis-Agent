@@ -1,4 +1,4 @@
-from Agents import ConversationParserAgent , ContextBuilderAgent , IntentDetectionAgent
+from Agents import ConversationParserAgent , ContextBuilderAgent , IntentDetectionAgent , SentimentAgent
 from crewai import  Crew , Process   # type: ignore
 import json
 
@@ -9,21 +9,24 @@ with open("Data/CustomerSupportSample.json", "r", encoding="utf-8") as f:
 Conversation_Parser = ConversationParserAgent()
 Context_Builder = ContextBuilderAgent()
 Intent_Detection = IntentDetectionAgent()
-
+Sentiment_Analyzer = SentimentAgent()
 
 agent1, task1 = Conversation_Parser.run()
 agent2, task2 = Context_Builder.run()
-agent3, task3 = Intent_Detection.run()
+agent3, task3 = Intent_Detection.run(task_name=task2)
+agent4, task4 = Sentiment_Analyzer.run(task_name=task2)
 
 
 crew = Crew(
             agents=[agent1,
                     agent2,
-                    agent3
+                    agent3,
+                    agent4
                 ], 
             tasks=[task1,
                    task2,
-                   task3
+                   task3,
+                   task4
             ],
             process = Process.sequential,
             tracing=True

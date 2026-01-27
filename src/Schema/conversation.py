@@ -26,3 +26,6 @@ class SentimentAnalysis(BaseModel):
 
 class IntentDetection(BaseModel):
     intent: str = Field(..., description="Main customer intent: Order Issue, Pickup, Return, Payment, Complaint, General Inquiry")
+
+class DecisionOutcome(BaseModel):
+    action: str = Field(..., description="Decided action: Answer Directly, Ask Clarification, Call Tool, Escalate to Human")

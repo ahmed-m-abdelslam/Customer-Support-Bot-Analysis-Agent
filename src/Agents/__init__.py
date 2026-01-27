@@ -2,3 +2,4 @@ from .ConversationParserAgent import ConversationParserAgent
 from .ContextBuilderAgent import ContextBuilderAgent
 from .IntentDetectionAgent import IntentDetectionAgent
 from .SentimentAgent import SentimentAgent
+from .DecisionAgent import DecisionAgent

@@ -34,7 +34,7 @@ class ConversationParserAgent(BaseAgent):
             
             expected_output="A JSON object containing list of structured conversation turns",
             output_json = AllTurns,
-            output_file_path= str(self.data_path() / "parsed_conversation.json"),
+            output_file= "Outputs/parsed_conversation.json",
             agent= agent,
         )
 

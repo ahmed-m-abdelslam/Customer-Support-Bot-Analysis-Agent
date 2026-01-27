@@ -1,10 +1,12 @@
 from Helpers.config import get_settings
+from crewai import  LLM  # type: ignore 
+
 class BaseAgent:
     def __init__(self):
         self.settings = get_settings()
-        
+
     @staticmethod
-    def llm(llm_name: str ,
+    def get_llm(llm_name: str ,
             temperature: float = 0 ,
             base_url: str = "" ,
             api_key: str = "",

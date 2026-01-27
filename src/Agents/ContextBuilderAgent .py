@@ -30,7 +30,7 @@ class ContextBuilderAgent(BaseAgent):
                 - Compute interaction statistics (repetition, length)
                 """,
             
-            expected_output="A JSON object containing Conversation user messages , agent messages and statistics",
+            expected_output="A JSON object containing Conversation user messages , agent messages , short summary and statistics",
             output_json = ConversationContext,
             output_file= "Outputs/context_summary.json",
             agent= agent,

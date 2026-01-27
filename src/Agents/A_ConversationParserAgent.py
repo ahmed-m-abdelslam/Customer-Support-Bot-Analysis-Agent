@@ -1,5 +1,6 @@
 from Agents.A_BaseAgent import BaseAgent
-from crewai import Agent , Task , LLM # type: ignore
+from crewai import Agent , Task # type: ignore
+from Schema.conversation import AllTurns
 
 class ConversationParserAgent(BaseAgent):
     def __init__(self):
@@ -22,14 +23,19 @@ class ConversationParserAgent(BaseAgent):
 
         task =Task(
             description="""
+                conversation = {conversation}
                 Parse the raw conversation text into structured turns.
                 Each turn must include:
-                - speaker (User or Agent)
-                - message
-                - position
+                - Speaker (User or Agent)
+                - Message
+                - Position
+                
                 """,
+            
+            expected_output="A JSON object containing list of structured conversation turns",
+            output_json = AllTurns,
+            output_file_path= str(self.data_path() / "parsed_conversation.json"),
             agent= agent,
-            expected_output="List of structured conversation turns"
         )
 
         return agent , task

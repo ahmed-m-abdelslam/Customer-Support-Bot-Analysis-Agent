@@ -1,5 +1,4 @@
 openai
 pydantic_settings
 crewai
-python-dotenv
 pydantic

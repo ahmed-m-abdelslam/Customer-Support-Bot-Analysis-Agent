@@ -1,5 +1,6 @@
 from Helpers.config import get_settings
-from crewai import  LLM  # type: ignore 
+from crewai import  LLM  # type: ignore
+from pathlib import Path 
 
 class BaseAgent:
     def __init__(self):
@@ -21,3 +22,12 @@ class BaseAgent:
                    )
   
         return llm
+    
+    def data_path(self) -> Path:
+        
+        base_dir = Path(__file__).resolve().parents[1]  # src
+        data_dir = base_dir / "Outputs"
+        
+        data_dir.mkdir(parents=True, exist_ok=True)
+
+        return data_dir  

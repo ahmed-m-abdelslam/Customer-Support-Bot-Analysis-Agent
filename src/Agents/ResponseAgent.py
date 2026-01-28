@@ -23,7 +23,7 @@ class ResponseAgent(BaseAgent):
         task = Task(
         description="""
             Generate a final customer-facing response.
-            - Use friendly Arabic
+            - Use friendly Arabic(Egyptian accent) tone
             - Match customer tone
             - Be clear and helpful
             """,

@@ -2,6 +2,7 @@ from fastapi import  APIRouter  , Request # type: ignore
 from Agents import ConversationParserAgent , ContextBuilderAgent , IntentDetectionAgent , SentimentAgent , DecisionAgent , ResponseAgent
 from crewai import  Crew , Process   # type: ignore
 from Helpers.data_loader import load_data
+from Schema.api import AnalyzeRequest
 
 
 
@@ -12,12 +13,15 @@ agent_router = APIRouter(
     tags=["api_v1","agent"]
 )
 
-@agent_router.post("/index/data")
-async def process_conversation( request: Request, payload: dict ):
+@agent_router.post("/analyze")
+async def process_conversation( request: Request, payload: AnalyzeRequest ):
     
     data = load_data()
 
-    conversation= data[payload["data_row"]]["conversation"]
+    if payload.data_row < 0 or payload.data_row >= len(data):
+        return {"error": "Invalid data_row index"}
+
+    conversation= data[payload.data_row]["conversation"]
 
     agent1, task1 = ConversationParserAgent().run()
     agent2, task2 = ContextBuilderAgent().run()
@@ -51,4 +55,4 @@ async def process_conversation( request: Request, payload: dict ):
                 }
             )
 
-    return {"result": crew_results.raw}
+    return crew_results.raw

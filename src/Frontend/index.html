@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Support Analyzer</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #d6d8de;
+      color: rgb(91, 71, 71);
+      padding: 30px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #22c55e;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    pre {
+      background: #020617;
+      padding: 50px;
+      border-radius: 8px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🧠 Customer Support Bot Agent</h2>
+
+<input 
+  type="number" 
+  id="dataRow" 
+  placeholder="Enter data row index (e.g. 0)" 
+/>
+
+<button onclick="analyze()">Analyze</button>
+
+<pre id="result"></pre>
+
+<script>
+async function analyze() {
+  const dataRow = document.getElementById("dataRow").value;
+  const resultBox = document.getElementById("result");
+
+  if (dataRow === "") {
+    resultBox.textContent = "❌ Please enter a data row index";
+    return;
+  }
+
+  resultBox.textContent = "⏳ Processing...";
+
+  const response = await fetch("http://127.0.0.1:8000/api/v1/agent/analyze", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      data_row: Number(dataRow)
+    })
+  });
+
+  const data = await response.json();
+  resultBox.textContent = JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>

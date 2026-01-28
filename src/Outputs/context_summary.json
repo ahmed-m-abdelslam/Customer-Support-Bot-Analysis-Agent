@@ -14,7 +14,7 @@
   ],
   "summary": "The user initiated the conversation with a greeting and inquired about the possibility of partial receipt of an order. The agent responded that partial receipt is not allowed and provided additional information about the service. The conversation ended with the agent offering further assistance and information on how to continue the chat or provide feedback.",
   "stats": {
-    "repetition": "No significant repetition detected.",
+    "repetition": "No significant repetition detected in user or agent messages.",
     "length": 9
   }
 }

@@ -11,7 +11,7 @@ class BaseAgent:
             temperature: float = 0 ,
             base_url: str = "" ,
             api_key: str = "",
-            max_tokens : int = 1000
+            max_tokens : int = 2000
             ) -> LLM:
 
         llm = LLM(model = llm_name,

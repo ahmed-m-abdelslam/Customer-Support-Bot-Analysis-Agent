@@ -29,3 +29,6 @@ class IntentDetection(BaseModel):
 
 class DecisionOutcome(BaseModel):
     action: str = Field(..., description="Decided action: Answer Directly, Ask Clarification, Call Tool, Escalate to Human")
+
+class FinalResponse(BaseModel):
+    response: str = Field(..., description="Final response to the customer")

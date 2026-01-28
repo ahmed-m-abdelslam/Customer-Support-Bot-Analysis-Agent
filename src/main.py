@@ -43,7 +43,7 @@ crew = Crew(
             tracing=True
             )
 
-conversation= data[0]["conversation"]
+conversation= data[10]["conversation"]
         
 crew_results = crew.kickoff(
                  inputs={
